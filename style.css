@@ -912,8 +912,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .nav-link { padding: 0.7rem 0.9rem; }
   .navbar-cta { display: none; }
   .menu-toggle { display: flex; }
-  .services-grid, .groups-grid, .repair-grid { grid-template-columns: 1fr; }
-  .culture-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid, .groups-grid { grid-template-columns: 1fr; }
+  .repair-grid { grid-template-columns: repeat(2, 1fr); }  /* 手机端 2×2 */
+  .culture-grid { grid-template-columns: repeat(2, 1fr); }  /* 手机端 3 行 2 列 */
   .footer-grid { grid-template-columns: 1fr; }
   .section { padding: 4rem 0; }
   .htimeline { display: none; }
@@ -926,7 +927,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .stat-number { font-size: 1.8rem; }
   .platform-links { grid-template-columns: 1fr; }
   .navbar-name { font-size: 0.92rem; }
-  .culture-grid { grid-template-columns: 1fr; }
+  /* 团队文化保持 3 行 2 列，故障报修保持 2×2 */
+  .culture-grid { grid-template-columns: repeat(2, 1fr); }
+  .repair-grid { grid-template-columns: repeat(2, 1fr); }
+  .culture-card, .repair-card { padding: 1rem; }
+  .culture-emoji { font-size: 1.9rem; }
+  .culture-card h4 { font-size: 0.98rem; }
+  .culture-card p { font-size: 0.82rem; }
+  .repair-icon-wrap { width: 42px; height: 42px; }
+  .repair-icon { font-size: 1.25rem; }
+  .repair-card h3 { font-size: 1rem; }
+  .repair-value { font-size: 0.95rem; }
+  .repair-note { font-size: 0.78rem; }
 }
 
 /* ---------- SVG 图标（Lucide sprite 引用） ---------- */
