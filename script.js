@@ -103,4 +103,177 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     reveals.forEach(el => el.classList.add('in-view'));
   }
+
+  /* ---------- 移动端荣誉轮播：自动滚 + 手指左右滑动 ---------- */
+  class MarqueeSwipe {
+    constructor(track, opts = {}) {
+      this.track = track;
+      this.direction = opts.direction || 1; // 1 = 向左, -1 = 向右
+      this.speed = opts.speed || 0.6;       // 自动滚速度 px/frame
+      this.friction = opts.friction || 0.92;
+      this.snap = opts.snap || false;
+
+      this.x = 0;
+      this.velocity = 0;
+      this.isDragging = false;
+      this.pointerId = null;
+      this.startX = 0;
+      this.lastX = 0;
+      this.lastTime = 0;
+      this.rAF = null;
+      this.halfWidth = 0;
+
+      // 复制一份内容，保证无缝循环
+      this.track.innerHTML += this.track.innerHTML;
+      this.refresh();
+      this.bind();
+      this.play();
+    }
+
+    refresh() {
+      this.halfWidth = this.track.scrollWidth / 2;
+      // 初始位置：反向轨道从 -halfWidth 开始，跟 CSS 关键帧一致
+      if (this.direction === -1 && this.x === 0) this.x = -this.halfWidth;
+      this.setTransform(this.x);
+    }
+
+    setTransform(x) {
+      // 无缝循环
+      if (this.direction === 1) {
+        while (x <= -this.halfWidth) x += this.halfWidth;
+        while (x > 0) x -= this.halfWidth;
+      } else {
+        while (x >= 0) x -= this.halfWidth;
+        while (x < -this.halfWidth) x += this.halfWidth;
+      }
+      this.x = x;
+      this.track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
+    }
+
+    play() {
+      if (this.rAF) return;
+      const loop = (now) => {
+        if (!this.isDragging) {
+          if (Math.abs(this.velocity) > 0.3) {
+            this.x += this.velocity;
+            this.velocity *= this.friction;
+          } else {
+            this.velocity = 0;
+            this.x += this.direction * this.speed;
+          }
+          this.setTransform(this.x);
+        }
+        this.rAF = requestAnimationFrame(loop);
+      };
+      this.rAF = requestAnimationFrame(loop);
+    }
+
+    pause() {
+      if (this.rAF) {
+        cancelAnimationFrame(this.rAF);
+        this.rAF = null;
+      }
+    }
+
+    destroy() {
+      this.pause();
+      this.unbind();
+      this.track.style.transform = '';
+      // 恢复原始内容（去掉复制的一半）
+      const children = Array.from(this.track.children);
+      const half = Math.floor(children.length / 2);
+      children.slice(half).forEach(c => c.remove());
+    }
+
+    bind() {
+      this.onDown = this.onDown.bind(this);
+      this.onMove = this.onMove.bind(this);
+      this.onUp = this.onUp.bind(this);
+      this.track.addEventListener('pointerdown', this.onDown, { passive: false });
+      window.addEventListener('pointermove', this.onMove, { passive: false });
+      window.addEventListener('pointerup', this.onUp);
+      window.addEventListener('pointercancel', this.onUp);
+    }
+
+    unbind() {
+      this.track.removeEventListener('pointerdown', this.onDown);
+      window.removeEventListener('pointermove', this.onMove);
+      window.removeEventListener('pointerup', this.onUp);
+      window.removeEventListener('pointercancel', this.onUp);
+    }
+
+    onDown(e) {
+      // 点在链接上时让链接能正常跳转，不拦截
+      if (e.target.closest('a')) return;
+      this.isDragging = true;
+      this.pointerId = e.pointerId;
+      this.track.setPointerCapture?.(e.pointerId);
+      this.startX = e.clientX;
+      this.lastX = e.clientX;
+      this.lastTime = performance.now();
+      this.velocity = 0;
+      this.track.style.cursor = 'grabbing';
+    }
+
+    onMove(e) {
+      if (!this.isDragging || e.pointerId !== this.pointerId) return;
+      e.preventDefault();
+      const now = performance.now();
+      const dx = e.clientX - this.lastX;
+      const dt = now - this.lastTime;
+      this.x += dx;
+      this.setTransform(this.x);
+      if (dt > 0) this.velocity = dx / dt * 16; // 估算每帧速度
+      this.lastX = e.clientX;
+      this.lastTime = now;
+    }
+
+    onUp(e) {
+      if (!this.isDragging || e.pointerId !== this.pointerId) return;
+      this.isDragging = false;
+      this.pointerId = null;
+      this.track.style.cursor = '';
+      // 惯性结束后继续自动滚
+      if (Math.abs(this.velocity) > 1.5) {
+        // 速度方向决定接下来往哪边滑；若速度很小仍按原方向
+        if (Math.abs(this.velocity) > 3) this.direction = this.velocity > 0 ? 1 : -1;
+      }
+    }
+  }
+
+  const tracks = document.querySelectorAll('.awards-track');
+  let mobileMarquees = [];
+  const isMobile = () => window.innerWidth <= 768;
+
+  const initMobileMarquee = () => {
+    if (mobileMarquees.length) return;
+    tracks.forEach((track, i) => {
+      const direction = track.classList.contains('awards-track--reverse') ? -1 : 1;
+      mobileMarquees.push(new MarqueeSwipe(track, {
+        direction,
+        speed: 0.5 + i * 0.1, // 上下排速度略有差异，避免死板
+        friction: 0.93
+      }));
+    });
+  };
+
+  const destroyMobileMarquee = () => {
+    mobileMarquees.forEach(m => m.destroy());
+    mobileMarquees = [];
+  };
+
+  if (isMobile()) initMobileMarquee();
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (isMobile()) {
+        if (!mobileMarquees.length) initMobileMarquee();
+        else mobileMarquees.forEach(m => m.refresh());
+      } else {
+        destroyMobileMarquee();
+      }
+    }, 150);
+  });
 });

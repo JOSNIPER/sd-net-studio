@@ -1144,9 +1144,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .awards-track--reverse { animation: none; }
 }
 @media (max-width: 768px) {
-  .awards-track--reverse { display: none; }              /* 移动端只保留单排 */
-  .awards-track--forward { animation-duration: 28s; }    /* 慢一点，方便看内容 */
-  .awards-marquee { gap: 0; }
+  .awards-marquee { gap: 0.75rem; }
+  .awards-track {
+    cursor: grab;
+    touch-action: pan-y;        /* 浏览器管竖滑，JS 管横滑 */
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .awards-track:active { cursor: grabbing; }
+  /* 移动端由 JS 驱动自动滚 + 拖拽；桌面端继续 CSS 动画 */
+  .awards-track--forward,
+  .awards-track--reverse { animation: none !important; }
 }
 @media (max-width: 480px) {
   .award-slide { width: 260px; padding: 1.1rem; }
