@@ -1,289 +1,106 @@
-/* ========== 粒子背景 ========== */
-(function initParticles() {
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouse = { x: null, y: null };
-    const PARTICLE_COUNT = window.innerWidth < 768 ? 30 : 60;
-    const CONNECT_DIST = 120;
+/* ============================================================
+   升达网络技术工作室 · 交互脚本（无外部依赖，内容默认可见）
+   - 主题切换 / 移动端菜单 / 滚动进度条 / 导航收缩
+   - 二维码弹窗 / 回到顶部 / 数字计数 / 滚动入场（渐进增强）
+   ============================================================ */
 
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
 
-    document.addEventListener('mousemove', e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.r = Math.random() * 2 + 0.5;
-            this.alpha = Math.random() * 0.4 + 0.1;
-        }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            // 鼠标吸引
-            if (mouse.x !== null) {
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 200) {
-                    this.vx += dx * 0.00008;
-                    this.vy += dy * 0.00008;
-                }
-            }
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            ctx.fillStyle = isDark
-                ? `rgba(96, 165, 250, ${this.alpha})`
-                : `rgba(37, 99, 235, ${this.alpha * 0.8})`;
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-
-        // 连线
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < CONNECT_DIST) {
-                    const alpha = (1 - dist / CONNECT_DIST) * 0.15;
-                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = isDark
-                        ? `rgba(96, 165, 250, ${alpha})`
-                        : `rgba(37, 99, 235, ${alpha * 0.8})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-    animate();
-})();
-
-/* ========== 主题切换 ========== */
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) html.setAttribute('data-theme', savedTheme);
-
-themeToggle.addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
+  /* ---------- 主题切换 ---------- */
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    root.setAttribute('data-theme', savedTheme);
+  }
+  themeToggle?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-});
+  });
 
-/* ========== 导航栏滚动 ========== */
-const header = document.getElementById('header');
-let lastScroll = 0;
+  /* ---------- 移动端菜单 ---------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  const overlay = document.getElementById('mobileOverlay');
+  const closeMenu = () => {
+    menuToggle?.classList.remove('open');
+    nav?.classList.remove('open');
+    overlay && (overlay.style.display = 'none');
+  };
+  menuToggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    menuToggle.classList.toggle('open', !!open);
+    if (overlay) overlay.style.display = open ? 'block' : 'none';
+  });
+  overlay?.addEventListener('click', closeMenu);
+  nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 60) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    lastScroll = scrollY;
-});
+  /* ---------- 滚动进度条 + 导航收缩 + 回到顶部 ---------- */
+  const progress = document.getElementById('scrollProgress');
+  const header = document.getElementById('header');
+  const backToTop = document.getElementById('backToTop');
+  const onScroll = () => {
+    const st = window.scrollY || document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    header?.classList.toggle('scrolled', st > 30);
+    backToTop?.classList.toggle('show', st > 400);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* ========== 移动端菜单 ========== */
-const menuToggle = document.getElementById('menuToggle');
-const nav = document.getElementById('nav');
-const mobileOverlay = document.getElementById('mobileOverlay');
+  /* ---------- 二维码弹窗 ---------- */
+  const openModal = (btnId, modalId) => {
+    const btn = document.getElementById(btnId);
+    const modal = document.getElementById(modalId);
+    btn?.addEventListener('click', () => modal?.classList.add('open'));
+  };
+  openModal('wechatBtn', 'qrModal');
+  openModal('wechatBtn2', 'qrModal');
+  openModal('qqBtn', 'qqModal');
+  openModal('qqBtn2', 'qqModal');
+  openModal('onlineRepair', 'qrModal');
+  document.querySelectorAll('.qr-modal').forEach(modal => {
+    modal.querySelector('.qr-modal-close')?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.querySelector('.qr-modal-overlay')?.addEventListener('click', () => modal.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.qr-modal.open').forEach(m => m.classList.remove('open'));
+  });
 
-function toggleMenu() {
-    nav.classList.toggle('open');
-    menuToggle.classList.toggle('active');
-    mobileOverlay.classList.toggle('active');
-    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-}
+  /* ---------- 数字滚动计数 ---------- */
+  const animateCount = (el) => {
+    const target = parseFloat(el.dataset.target || '0');
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  document.querySelectorAll('.stat-number').forEach(animateCount);
 
-menuToggle.addEventListener('click', toggleMenu);
-mobileOverlay.addEventListener('click', toggleMenu);
-
-nav.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (nav.classList.contains('open')) toggleMenu();
-    });
-});
-
-/* ========== 打字效果 ========== */
-const typingEl = document.getElementById('typingText');
-const fullText = '升达网络技术工作室';
-let charIndex = 0;
-
-function typeWriter() {
-    if (charIndex <= fullText.length) {
-        typingEl.textContent = fullText.substring(0, charIndex);
-        charIndex++;
-        setTimeout(typeWriter, 150);
-    } else {
-        // 打完后隐藏光标
-        setTimeout(() => {
-            document.querySelector('.typing-cursor').style.display = 'none';
-        }, 1500);
-    }
-}
-// 延迟启动打字
-setTimeout(typeWriter, 600);
-
-/* ========== 数字滚动 ========== */
-function animateCounters() {
-    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1200;
-        const start = performance.now();
-
-        function step(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            // easeOutExpo
-            const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-            el.textContent = Math.floor(ease * target) + suffix;
-            if (progress < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    });
-}
-// 页面加载后触发
-setTimeout(animateCounters, 1200);
-
-/* ========== 滚动入场 ========== */
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  /* ---------- 滚动入场（渐进增强） ---------- */
+  // 仅当 JS 正常运行时才隐藏初始态，保证脚本失败内容也完整可见
+  document.body.classList.add('js-reveal');
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            const delay = entry.target.style.getPropertyValue('--delay');
-            if (delay) {
-                entry.target.style.transitionDelay = `${parseInt(delay) * 0.1}s`;
-            }
-            entry.target.classList.add('visible');
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
         }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-revealElements.forEach(el => revealObserver.observe(el));
-
-/* ========== 导航高亮 ========== */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        if (window.scrollY >= top) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-});
-
-/* ========== 时间线拖拽滑动 ========== */
-const timelineWrap = document.querySelector('.timeline-scroll-wrap');
-if (timelineWrap) {
-    let isDown = false, startX, scrollLeft;
-
-    timelineWrap.addEventListener('mousedown', e => {
-        isDown = true; startX = e.pageX - timelineWrap.offsetLeft;
-        scrollLeft = timelineWrap.scrollLeft;
-    });
-    timelineWrap.addEventListener('mouseleave', () => isDown = false);
-    timelineWrap.addEventListener('mouseup', () => isDown = false);
-    timelineWrap.addEventListener('mousemove', e => {
-        if (!isDown) return; e.preventDefault();
-        const x = e.pageX - timelineWrap.offsetLeft;
-        timelineWrap.scrollLeft = scrollLeft - (x - startX) * 1.5;
-    });
-
-    // 默认滚动到最新年份（右侧）
-    timelineWrap.scrollLeft = timelineWrap.scrollWidth;
-}
-
-/* ========== 微信二维码弹窗 ========== */
-const wechatBtn = document.getElementById('wechatBtn');
-const qrModal = document.getElementById('qrModal');
-const qrModalClose = document.getElementById('qrModalClose');
-const qrModalOverlay = qrModal?.querySelector('.qr-modal-overlay');
-
-if (wechatBtn && qrModal) {
-    wechatBtn.addEventListener('click', () => qrModal.classList.add('active'));
-    qrModalClose?.addEventListener('click', () => qrModal.classList.remove('active'));
-    qrModalOverlay?.addEventListener('click', () => qrModal.classList.remove('active'));
-}
-
-// 线上报修卡片也弹出微信公众号二维码
-const onlineRepair = document.getElementById('onlineRepair');
-if (onlineRepair && qrModal) {
-    onlineRepair.style.cursor = 'pointer';
-    onlineRepair.addEventListener('click', () => qrModal.classList.add('active'));
-}
-
-const qqBtn = document.getElementById('qqBtn');
-const qqModal = document.getElementById('qqModal');
-const qqModalClose = document.getElementById('qqModalClose');
-const qqModalOverlay = qqModal?.querySelector('.qr-modal-overlay');
-
-if (qqBtn && qqModal) {
-    qqBtn.addEventListener('click', () => qqModal.classList.add('active'));
-    qqModalClose?.addEventListener('click', () => qqModal.classList.remove('active'));
-    qqModalOverlay?.addEventListener('click', () => qqModal.classList.remove('active'));
-}
-
-/* ========== 回到顶部 ========== */
-const backToTop = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 400);
-});
-
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* ========== 平滑锚点 ========== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        const href = anchor.getAttribute('href');
-        if (href === '#') {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in-view'));
+  }
 });
