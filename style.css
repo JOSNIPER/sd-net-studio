@@ -374,7 +374,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--muted-foreground);
   text-align: center;
 }
-.about-intro strong { color: var(--foreground); }
+.about-intro strong { color: var(--foreground); white-space: nowrap; }
+.about-break { display: none; }   /* 桌面端自然排版，不强制换行 */
 
 .services-grid {
   display: grid;
@@ -919,6 +920,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .section { padding: 4rem 0; }
   .htimeline { display: none; }
   .vtimeline { display: block; }
+  .about-break { display: inline; }   /* 手机端：在"直属于"前换行 */
 }
 
 @media (max-width: 480px) {
