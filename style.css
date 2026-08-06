@@ -845,7 +845,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .qr-modal-content h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
 .qr-modal-content p { font-size: 0.9rem; color: var(--muted-foreground); margin-bottom: 1.2rem; }
-.qr-modal-img { width: 200px; height: 200px; margin: 0 auto; border-radius: 0.6rem; }
+.qr-modal-img { width: 200px; height: auto; max-width: 100%; margin: 0 auto; border-radius: 0.6rem; }
 .qr-modal-close {
   position: absolute;
   top: 0.8rem; right: 0.9rem;
