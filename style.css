@@ -1019,6 +1019,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: #fbbf24;
   background: rgba(251, 191, 36, 0.18);
 }
+.award-tag--silver {
+  color: #0f766e;
+  background: rgba(45, 212, 191, 0.16);
+}
+[data-theme="dark"] .award-tag--silver {
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.16);
+}
 .award-desc {
   font-size: 0.9rem;
   color: var(--muted-foreground);
