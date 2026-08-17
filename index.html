@@ -12,7 +12,7 @@
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
-  <circle cx="12" cy="8" r="6" /></symbol><symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16" />
+  <circle cx="12" cy="8" r="6" /></symbol><symbol id="icon-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" /></symbol><symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16" />
   <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" /></symbol><symbol id="icon-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2" />
   <path d="M12 2v2" />
@@ -147,7 +147,7 @@
                     <span class="stat-label">核心业务</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-number" data-target="4">0</span>
                     <span class="stat-label">兴趣小组</span>
                 </div>
                 <div class="stat-item">
@@ -235,7 +235,7 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">Interest Groups</span>
-                <h2 class="section-title">三大兴趣小组</h2>
+                <h2 class="section-title">四大兴趣小组</h2>
                 <p class="section-desc">新成员可根据兴趣选择加入，在技术方向上深耕成长</p>
             </div>
             <div class="groups-grid">
@@ -287,6 +287,22 @@
                     </ul>
                     <div class="group-target">适合：有创意有想法、喜欢视觉表达、想学习新媒体运营的同学</div>
                 </div>
+                <div class="group-card reveal reveal-up">
+                    <div class="group-bg-icon"><svg class="icon" aria-hidden="true"><use href="#icon-bot"/></svg></div>
+                    <div class="group-header">
+                        <div class="group-icon"><svg class="icon" aria-hidden="true"><use href="#icon-bot"/></svg></div>
+                        <span class="group-badge">AIGC</span>
+                    </div>
+                    <h3 class="group-title">AI智汇小组</h3>
+                    <p class="group-desc">聚焦 AIGC 内容工业化与 Vibe-Coding 智能开发前沿赛道，以真实商业项目实战为核心，带领组员做出可上线、可变现的完整作品。</p>
+                    <ul class="group-features">
+                        <li>AIGC 内容工业化产出（图文 / 视频 / 漫剧 / 多模态）</li>
+                        <li>Vibe-Coding 智能体与 AI 应用开发</li>
+                        <li>真实商业项目落地 + 实战变现（短剧 / 出海 / 电商）</li>
+                        <li>科创赛事作品沉淀（可上线、可接单）</li>
+                    </ul>
+                    <div class="group-target">适合：热爱前沿科技、愿意动手实战、想从学习直达接单变现的同学（零基础可入）</div>
+                </div>
             </div>
         </div>
     </section>
@@ -300,307 +316,626 @@
                 <p class="section-desc">2018 年至今，积极参与校级、省级、国家级专业赛事，硕果累累</p>
             </div>
                         <!-- 荣誉成就：双排对向轮播 -->
-            <div class="awards-marquee reveal" aria-label="荣誉成就轮播">
+            <div class="awards-marquee reveal" aria-label="荣誉成就轮播" style="--awards-duration: 112s">
                 <div class="awards-track awards-track--forward">
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>新华三杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
-                            <ul class="award-slide-list">
-                            <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
-                            <li>安全赛道一等奖 6 项、三等奖 6 项</li>
-                            <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
-                            <li>2022 全国总决赛优胜奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>御网杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">网络安全攻防大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
-                            <li>2026 第十届团队赛校内选拔赛第 1 名</li>
-                            </ul>
-                            <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>网络文化节</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
-                            <ul class="award-slide-list">
-                            <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
-                            <li>2021 第十五届协办单位</li>
-                            <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>智能体大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">首届智能体创新应用大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
-                            </ul>
-                            <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>金盾信安杯</h4>
-                                <span class="award-tag award-tag--silver">省级</span>
-                            </div>
-                            <p class="award-slide-desc">网络与数据安全大赛</p>
-                            <ul class="award-slide-list">
-                            <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>摄影大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校园摄影类赛事</p>
-                            <ul class="award-slide-list">
-                            <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
-                            <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>新华三杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
-                            <ul class="award-slide-list">
-                            <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
-                            <li>安全赛道一等奖 6 项、三等奖 6 项</li>
-                            <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
-                            <li>2022 全国总决赛优胜奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>御网杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">网络安全攻防大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
-                            <li>2026 第十届团队赛校内选拔赛第 1 名</li>
-                            </ul>
-                            <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>网络文化节</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
-                            <ul class="award-slide-list">
-                            <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
-                            <li>2021 第十五届协办单位</li>
-                            <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>智能体大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">首届智能体创新应用大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
-                            </ul>
-                            <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>金盾信安杯</h4>
-                                <span class="award-tag award-tag--silver">省级</span>
-                            </div>
-                            <p class="award-slide-desc">网络与数据安全大赛</p>
-                            <ul class="award-slide-list">
-                            <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>摄影大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校园摄影类赛事</p>
-                            <ul class="award-slide-list">
-                            <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
-                            <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
-                            </ul>
-
-                        </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>新华三杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
+                    <ul class="award-slide-list">
+                        <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
+                        <li>安全赛道一等奖 6 项、三等奖 6 项</li>
+                        <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
+                        <li>2022 全国总决赛优胜奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>御网杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">网络安全攻防大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
+                        <li>2026 第十届团队赛校内选拔赛第 1 名</li>
+                    </ul>
+                    <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>网络文化节</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
+                    <ul class="award-slide-list">
+                        <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
+                        <li>2021 第十五届协办单位</li>
+                        <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>智能体大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">首届智能体创新应用大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
+                        <li>王佳琦 融研智笔 获三等奖 + 最受欢迎奖</li>
+                    </ul>
+                    <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>金盾信安杯</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">网络与数据安全大赛</p>
+                    <ul class="award-slide-list">
+                        <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>摄影大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校园摄影类赛事</p>
+                    <ul class="award-slide-list">
+                        <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
+                        <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>码蹄杯程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖，晋级国赛）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 码蹄杯 省赛银奖（晋级国赛，2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>百度之星程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 百度之星 省赛银奖（2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Adventure X 中原黑客松</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">中原黑客松</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 获最佳创新奖（2026.07）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Trae AI 创造力大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创造力赛事（两项合并）</p>
+                    <ul class="award-slide-list">
+                        <li>郑州线下赛 最佳人气奖（王佳琦，2026.07）</li>
+                        <li>AI 创造力大赛 Top2000·先锋探索者（王佳琦）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>AI 先锋未来人才大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创新赛事</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 入围晋级赛（2026）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>挑战杯</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级课外学术科技作品竞赛</p>
+                    <ul class="award-slide-list">
+                        <li>罗景祺 获校级二等奖（AIGC 合香电商展示）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>有创意河南视频大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">视频创作大赛</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获二等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>全国数字媒体艺术大赛</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">数字媒体艺术赛事</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获国赛三等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>新华三杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
+                    <ul class="award-slide-list">
+                        <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
+                        <li>安全赛道一等奖 6 项、三等奖 6 项</li>
+                        <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
+                        <li>2022 全国总决赛优胜奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>御网杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">网络安全攻防大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
+                        <li>2026 第十届团队赛校内选拔赛第 1 名</li>
+                    </ul>
+                    <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>网络文化节</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
+                    <ul class="award-slide-list">
+                        <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
+                        <li>2021 第十五届协办单位</li>
+                        <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>智能体大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">首届智能体创新应用大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
+                        <li>王佳琦 融研智笔 获三等奖 + 最受欢迎奖</li>
+                    </ul>
+                    <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>金盾信安杯</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">网络与数据安全大赛</p>
+                    <ul class="award-slide-list">
+                        <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>摄影大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校园摄影类赛事</p>
+                    <ul class="award-slide-list">
+                        <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
+                        <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>码蹄杯程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖，晋级国赛）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 码蹄杯 省赛银奖（晋级国赛，2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>百度之星程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 百度之星 省赛银奖（2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Adventure X 中原黑客松</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">中原黑客松</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 获最佳创新奖（2026.07）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Trae AI 创造力大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创造力赛事（两项合并）</p>
+                    <ul class="award-slide-list">
+                        <li>郑州线下赛 最佳人气奖（王佳琦，2026.07）</li>
+                        <li>AI 创造力大赛 Top2000·先锋探索者（王佳琦）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>AI 先锋未来人才大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创新赛事</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 入围晋级赛（2026）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>挑战杯</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级课外学术科技作品竞赛</p>
+                    <ul class="award-slide-list">
+                        <li>罗景祺 获校级二等奖（AIGC 合香电商展示）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>有创意河南视频大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">视频创作大赛</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获二等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>全国数字媒体艺术大赛</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">数字媒体艺术赛事</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获国赛三等奖</li>
+                    </ul>
+                </div>
                 </div>
                 <div class="awards-track awards-track--reverse">
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>智能体大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">首届智能体创新应用大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
-                            </ul>
-                            <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>金盾信安杯</h4>
-                                <span class="award-tag award-tag--silver">省级</span>
-                            </div>
-                            <p class="award-slide-desc">网络与数据安全大赛</p>
-                            <ul class="award-slide-list">
-                            <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>摄影大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校园摄影类赛事</p>
-                            <ul class="award-slide-list">
-                            <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
-                            <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>新华三杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
-                            <ul class="award-slide-list">
-                            <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
-                            <li>安全赛道一等奖 6 项、三等奖 6 项</li>
-                            <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
-                            <li>2022 全国总决赛优胜奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>御网杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">网络安全攻防大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
-                            <li>2026 第十届团队赛校内选拔赛第 1 名</li>
-                            </ul>
-                            <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>网络文化节</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
-                            <ul class="award-slide-list">
-                            <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
-                            <li>2021 第十五届协办单位</li>
-                            <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>智能体大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">首届智能体创新应用大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
-                            </ul>
-                            <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>金盾信安杯</h4>
-                                <span class="award-tag award-tag--silver">省级</span>
-                            </div>
-                            <p class="award-slide-desc">网络与数据安全大赛</p>
-                            <ul class="award-slide-list">
-                            <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>摄影大赛</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校园摄影类赛事</p>
-                            <ul class="award-slide-list">
-                            <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
-                            <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
-                            </ul>
-
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>新华三杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
-                            <ul class="award-slide-list">
-                            <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
-                            <li>安全赛道一等奖 6 项、三等奖 6 项</li>
-                            <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
-                            <li>2022 全国总决赛优胜奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>御网杯</h4>
-                                <span class="award-tag award-tag--gold">国家级</span>
-                            </div>
-                            <p class="award-slide-desc">网络安全攻防大赛</p>
-                            <ul class="award-slide-list">
-                            <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
-                            <li>2026 第十届团队赛校内选拔赛第 1 名</li>
-                            </ul>
-                            <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
-                        <div class="award-slide">
-                            <div class="award-slide-head">
-                                <h4>网络文化节</h4>
-                                <span class="award-tag">校级</span>
-                            </div>
-                            <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
-                            <ul class="award-slide-list">
-                            <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
-                            <li>2021 第十五届协办单位</li>
-                            <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
-                            </ul>
-                            <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
-                        </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>百度之星程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 百度之星 省赛银奖（2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Adventure X 中原黑客松</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">中原黑客松</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 获最佳创新奖（2026.07）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Trae AI 创造力大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创造力赛事（两项合并）</p>
+                    <ul class="award-slide-list">
+                        <li>郑州线下赛 最佳人气奖（王佳琦，2026.07）</li>
+                        <li>AI 创造力大赛 Top2000·先锋探索者（王佳琦）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>AI 先锋未来人才大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创新赛事</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 入围晋级赛（2026）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>挑战杯</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级课外学术科技作品竞赛</p>
+                    <ul class="award-slide-list">
+                        <li>罗景祺 获校级二等奖（AIGC 合香电商展示）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>有创意河南视频大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">视频创作大赛</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获二等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>全国数字媒体艺术大赛</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">数字媒体艺术赛事</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获国赛三等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>新华三杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
+                    <ul class="award-slide-list">
+                        <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
+                        <li>安全赛道一等奖 6 项、三等奖 6 项</li>
+                        <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
+                        <li>2022 全国总决赛优胜奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>御网杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">网络安全攻防大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
+                        <li>2026 第十届团队赛校内选拔赛第 1 名</li>
+                    </ul>
+                    <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>网络文化节</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
+                    <ul class="award-slide-list">
+                        <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
+                        <li>2021 第十五届协办单位</li>
+                        <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>智能体大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">首届智能体创新应用大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
+                        <li>王佳琦 融研智笔 获三等奖 + 最受欢迎奖</li>
+                    </ul>
+                    <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>金盾信安杯</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">网络与数据安全大赛</p>
+                    <ul class="award-slide-list">
+                        <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>摄影大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校园摄影类赛事</p>
+                    <ul class="award-slide-list">
+                        <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
+                        <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>码蹄杯程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖，晋级国赛）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 码蹄杯 省赛银奖（晋级国赛，2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>百度之星程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 百度之星 省赛银奖（2026.06）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Adventure X 中原黑客松</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">中原黑客松</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 获最佳创新奖（2026.07）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>Trae AI 创造力大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创造力赛事（两项合并）</p>
+                    <ul class="award-slide-list">
+                        <li>郑州线下赛 最佳人气奖（王佳琦，2026.07）</li>
+                        <li>AI 创造力大赛 Top2000·先锋探索者（王佳琦）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>AI 先锋未来人才大赛</h4>
+                        <span class="award-tag">赛事</span>
+                    </div>
+                    <p class="award-slide-desc">AI 创新赛事</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 入围晋级赛（2026）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>挑战杯</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级课外学术科技作品竞赛</p>
+                    <ul class="award-slide-list">
+                        <li>罗景祺 获校级二等奖（AIGC 合香电商展示）</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>有创意河南视频大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">视频创作大赛</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获二等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>全国数字媒体艺术大赛</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">数字媒体艺术赛事</p>
+                    <ul class="award-slide-list">
+                        <li>孙丰雨 获国赛三等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>新华三杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">连续 8 年参赛（2018–2026），国奖省奖双线斩获</p>
+                    <ul class="award-slide-list">
+                        <li>2026 河南省赛：网络赛道二等奖 5 项、三等奖 22 项</li>
+                        <li>安全赛道一等奖 6 项、三等奖 6 项</li>
+                        <li>2024–2025 团队赛全国二等奖 · 尹茂森个人赛全国三等奖</li>
+                        <li>2022 全国总决赛优胜奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1023/64739.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>御网杯</h4>
+                        <span class="award-tag award-tag--gold">国家级</span>
+                    </div>
+                    <p class="award-slide-desc">网络安全攻防大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2025 省级正赛个人赛一/二/三等奖若干、团体赛三等奖若干</li>
+                        <li>2026 第十届团队赛校内选拔赛第 1 名</li>
+                    </ul>
+                    <a href="https://xgxy.shengda.edu.cn/info/1009/8172.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>网络文化节</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校级大学生网络文化节，参与并协办</p>
+                    <ul class="award-slide-list">
+                        <li>2018 微电影特等奖、网页设计一等奖等 5 项</li>
+                        <li>2021 第十五届协办单位</li>
+                        <li>2026 第十八届网页设计一等奖、表情包设计三等奖</li>
+                    </ul>
+                    <a href="https://www.shengda.edu.cn/info/1026/27980.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>智能体大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">首届智能体创新应用大赛</p>
+                    <ul class="award-slide-list">
+                        <li>2026 3 小组分获智慧校园运维、校园生活服务、网络安全运维方向</li>
+                        <li>王佳琦 融研智笔 获三等奖 + 最受欢迎奖</li>
+                    </ul>
+                    <a href="https://xxhc.shengda.edu.cn/info/1010/2426.htm" target="_blank" class="award-source">查看来源 ↗</a>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>金盾信安杯</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">网络与数据安全大赛</p>
+                    <ul class="award-slide-list">
+                        <li>第七届 陈凯歌、张慧欣等团队获河南省三等奖若干</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>摄影大赛</h4>
+                        <span class="award-tag">校级</span>
+                    </div>
+                    <p class="award-slide-desc">校园摄影类赛事</p>
+                    <ul class="award-slide-list">
+                        <li>“书海泛舟”摄影大赛 吴婷 校二等奖</li>
+                        <li>“镜见升达·秋映韶华”摄影大赛 张馨怡 校一等奖</li>
+                    </ul>
+                </div>
+                <div class="award-slide">
+                    <div class="award-slide-head">
+                        <h4>码蹄杯程序设计大赛</h4>
+                        <span class="award-tag award-tag--silver">省级</span>
+                    </div>
+                    <p class="award-slide-desc">程序设计竞赛（王佳琦 省赛银奖，晋级国赛）</p>
+                    <ul class="award-slide-list">
+                        <li>王佳琦 码蹄杯 省赛银奖（晋级国赛，2026.06）</li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- 团队文化 -->
     <section id="culture" class="section section-alt">
         <div class="container">

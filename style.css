@@ -428,7 +428,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ---------- 兴趣小组 ---------- */
 .groups-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
 }
 .group-card { position: relative; overflow: hidden; }
@@ -1092,8 +1092,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 1rem;
   width: max-content;
 }
-.awards-track--forward { animation: marquee-forward 32s linear infinite; }
-.awards-track--reverse { animation: marquee-reverse 32s linear infinite; }
+.awards-track--forward { animation: marquee-forward var(--awards-duration, 32s) linear infinite; }
+.awards-track--reverse { animation: marquee-reverse var(--awards-duration, 32s) linear infinite; }
 .awards-track:hover { animation-play-state: paused; }
 @keyframes marquee-forward {
   0% { transform: translateX(0); }
