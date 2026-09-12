@@ -232,6 +232,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--foreground);
 }
 .btn-outline:hover { background: var(--accent); transform: translateY(-2px); }
+.recruit-download { margin-top: 0.9rem; }
 
 /* ---------- Hero ---------- */
 .hero {
