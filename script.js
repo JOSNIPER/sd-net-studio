@@ -269,45 +269,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const setupDesktopDrag = () => {
     const marquee = document.querySelector('.awards-marquee');
     if (!marquee) return null;
-    const dtracks = marquee.querySelectorAll('.awards-track');
-    let shift = 0, dragging = false, moved = false, startX = 0, startShift = 0, pid = null;
-    const apply = () => dtracks.forEach(t => { t.style.translate = shift + 'px'; });
-    const onDown = (e) => {
-      if (e.target.closest('a')) return;        // 点在链接上：交给链接，不拦截
-      dragging = true; moved = false; pid = e.pointerId;
-      startX = e.clientX; startShift = shift;
-      marquee.classList.add('is-dragging');
-      marquee.setPointerCapture?.(e.pointerId);
-    };
-    const onMove = (e) => {
-      if (!dragging || e.pointerId !== pid) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;        // 超过阈值才算拖拽，避免误伤点击
-      shift = startShift + dx;
-      apply();
-    };
-    const onUp = () => {
-      if (!dragging) return;
-      dragging = false;
-      marquee.classList.remove('is-dragging');
-      // 发生过拖拽时，抑制随之触发的点击（防止误开链接）
-      if (moved) {
-        const stop = (ev) => { ev.preventDefault(); ev.stopPropagation(); marquee.removeEventListener('click', stop, true); };
-        marquee.addEventListener('click', stop, true);
-      }
-    };
-    marquee.addEventListener('pointerdown', onDown);
-    marquee.addEventListener('pointermove', onMove);
-    marquee.addEventListener('pointerup', onUp);
-    marquee.addEventListener('pointercancel', onUp);
-    return () => {                                // 切换到移动端时清理
-      marquee.removeEventListener('pointerdown', onDown);
-      marquee.removeEventListener('pointermove', onMove);
-      marquee.removeEventListener('pointerup', onUp);
-      marquee.removeEventListener('pointercancel', onUp);
-      marquee.classList.remove('is-dragging');
-      dtracks.forEach(t => { t.style.translate = ''; });
-    };
+    const teardown = [];
+    // 每一行独立拖拽：各自的位移、各自暂停动画，互不干扰
+    marquee.querySelectorAll('.awards-track').forEach((track) => {
+      let shift = 0, dragging = false, moved = false, startX = 0, startShift = 0, pid = null;
+      const apply = () => { track.style.translate = shift + 'px'; };
+      const onDown = (e) => {
+        if (e.target.closest('a')) return;          // 点在链接上：交给链接，不拦截
+        dragging = true; moved = false; pid = e.pointerId;
+        startX = e.clientX; startShift = shift;
+        track.classList.add('is-dragging');
+        track.setPointerCapture?.(e.pointerId);
+      };
+      const onMove = (e) => {
+        if (!dragging || e.pointerId !== pid) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) moved = true;          // 超过阈值才算拖拽，避免误伤点击
+        shift = startShift + dx;
+        apply();
+      };
+      const onUp = () => {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('is-dragging');
+        // 发生过拖拽时，抑制随之触发的点击（防止误开链接）
+        if (moved) {
+          const stop = (ev) => { ev.preventDefault(); ev.stopPropagation(); track.removeEventListener('click', stop, true); };
+          track.addEventListener('click', stop, true);
+        }
+      };
+      track.addEventListener('pointerdown', onDown);
+      track.addEventListener('pointermove', onMove);
+      track.addEventListener('pointerup', onUp);
+      track.addEventListener('pointercancel', onUp);
+      teardown.push(() => {                          // 切换到移动端时按行清理
+        track.removeEventListener('pointerdown', onDown);
+        track.removeEventListener('pointermove', onMove);
+        track.removeEventListener('pointerup', onUp);
+        track.removeEventListener('pointercancel', onUp);
+        track.classList.remove('is-dragging');
+        track.style.translate = '';
+      });
+    });
+    return () => teardown.forEach(fn => fn());
   };
 
   // 按当前视口模式启停对应的轮播方案，避免桌面/移动逻辑互相打架

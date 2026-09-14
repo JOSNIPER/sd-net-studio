@@ -1097,11 +1097,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .awards-track--reverse { animation: marquee-reverse var(--awards-duration, 32s) linear infinite; }
 .awards-track:hover { animation-play-state: paused; }
 
-/* 桌面端鼠标拖拽：用独立 translate 叠加在 CSS 动画之上，拖拽时暂停、松手后继续原动画 */
+/* 桌面端鼠标拖拽：每行独立，用独立 translate 叠加在 CSS 动画之上，拖拽该行使该行动画暂停、松手后继续 */
 @media (hover: hover) and (pointer: fine) {
-  .awards-marquee { cursor: grab; }
-  .awards-marquee.is-dragging { cursor: grabbing; user-select: none; }
-  .awards-marquee.is-dragging .awards-track { animation-play-state: paused; }
+  .awards-track { cursor: grab; }
+  .awards-track.is-dragging { cursor: grabbing; user-select: none; animation-play-state: paused; }
 }
 @keyframes marquee-forward {
   0% { transform: translateX(0); }
