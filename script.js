@@ -243,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const tracks = document.querySelectorAll('.awards-track');
   let mobileMarquees = [];
+  let desktopDrag = null;
   const isMobile = () => window.innerWidth <= 768;
 
   const initMobileMarquee = () => {
@@ -262,18 +263,69 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMarquees = [];
   };
 
-  if (isMobile()) initMobileMarquee();
+  /* ---------- 桌面端荣誉轮播：鼠标拖拽（保留 CSS 动画） ---------- */
+  // 用独立 translate 属性叠加在动画 transform 之上，拖拽时暂停动画、按位移偏移，
+  // 松手后动画从冻结帧继续，零跳变；无鼠标操作时就是原 CSS 无缝滚动。
+  const setupDesktopDrag = () => {
+    const marquee = document.querySelector('.awards-marquee');
+    if (!marquee) return null;
+    const dtracks = marquee.querySelectorAll('.awards-track');
+    let shift = 0, dragging = false, moved = false, startX = 0, startShift = 0, pid = null;
+    const apply = () => dtracks.forEach(t => { t.style.translate = shift + 'px'; });
+    const onDown = (e) => {
+      if (e.target.closest('a')) return;        // 点在链接上：交给链接，不拦截
+      dragging = true; moved = false; pid = e.pointerId;
+      startX = e.clientX; startShift = shift;
+      marquee.classList.add('is-dragging');
+      marquee.setPointerCapture?.(e.pointerId);
+    };
+    const onMove = (e) => {
+      if (!dragging || e.pointerId !== pid) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;        // 超过阈值才算拖拽，避免误伤点击
+      shift = startShift + dx;
+      apply();
+    };
+    const onUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      marquee.classList.remove('is-dragging');
+      // 发生过拖拽时，抑制随之触发的点击（防止误开链接）
+      if (moved) {
+        const stop = (ev) => { ev.preventDefault(); ev.stopPropagation(); marquee.removeEventListener('click', stop, true); };
+        marquee.addEventListener('click', stop, true);
+      }
+    };
+    marquee.addEventListener('pointerdown', onDown);
+    marquee.addEventListener('pointermove', onMove);
+    marquee.addEventListener('pointerup', onUp);
+    marquee.addEventListener('pointercancel', onUp);
+    return () => {                                // 切换到移动端时清理
+      marquee.removeEventListener('pointerdown', onDown);
+      marquee.removeEventListener('pointermove', onMove);
+      marquee.removeEventListener('pointerup', onUp);
+      marquee.removeEventListener('pointercancel', onUp);
+      marquee.classList.remove('is-dragging');
+      dtracks.forEach(t => { t.style.translate = ''; });
+    };
+  };
+
+  // 按当前视口模式启停对应的轮播方案，避免桌面/移动逻辑互相打架
+  const syncMode = () => {
+    if (isMobile()) {
+      if (!mobileMarquees.length) initMobileMarquee();
+      else mobileMarquees.forEach(m => m.refresh());
+      if (desktopDrag) { desktopDrag(); desktopDrag = null; }
+    } else {
+      destroyMobileMarquee();
+      if (!desktopDrag) desktopDrag = setupDesktopDrag();
+    }
+  };
+  syncMode();
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (isMobile()) {
-        if (!mobileMarquees.length) initMobileMarquee();
-        else mobileMarquees.forEach(m => m.refresh());
-      } else {
-        destroyMobileMarquee();
-      }
-    }, 150);
+    resizeTimer = setTimeout(syncMode, 150);
   });
 });
