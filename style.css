@@ -233,6 +233,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn-outline:hover { background: var(--accent); transform: translateY(-2px); }
 .recruit-download { margin-top: 0.9rem; }
+/* 可点击联系方式：手机端一键拨打 / 发邮件 */
+.contact-link, .footer-col a.contact-link { color: var(--primary); text-decoration: none; }
+.contact-link:hover, .footer-col a.contact-link:hover { text-decoration: underline; }
+/* 移动端汉堡菜单内的「加入我们」按钮（桌面端由 .navbar-cta 承担，默认隐藏） */
+.nav-cta-mobile { display: none; }
+/* 移动端底部招新快捷栏：桌面端默认隐藏，仅 ≤768px 媒体查询内显示 */
+.mobile-recruit-bar { display: none; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -1190,4 +1197,53 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .award-slide-head h4 { font-size: 1.05rem; }
   .award-slide-desc { font-size: 0.8rem; }
   .award-slide-list li { font-size: 0.82rem; }
+}
+
+/* ---------- 移动端：菜单内「加入我们」+ 底部招新快捷栏 ---------- */
+@media (max-width: 768px) {
+  /* 汉堡菜单顶部的加入按钮 */
+  .nav-cta-mobile {
+    display: block;
+    margin: 0.5rem 0.9rem 0.3rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-foreground);
+    background: var(--primary);
+    border-radius: 0.7rem;
+    box-shadow: 0 4px 14px var(--primary-soft);
+  }
+  .nav-cta-mobile:active { transform: translateY(1px); }
+
+  /* 底部常驻招新快捷栏（下滑过首屏后出现） */
+  .mobile-recruit-bar {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 870;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem calc(0.6rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--card) 94%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+    transform: translateY(120%);
+    transition: transform .3s ease;
+  }
+  .mobile-recruit-bar.show { transform: translateY(0); }
+  body.recruit-bar-open { padding-bottom: calc(4.8rem + env(safe-area-inset-bottom)); }
+  .mrb-primary, .mrb-secondary {
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    padding: 0.82rem 1rem;
+    font-size: 0.98rem; font-weight: 700;
+    border-radius: 0.8rem;
+    white-space: nowrap;
+  }
+  .mrb-primary { background: var(--primary); color: var(--primary-foreground); box-shadow: 0 4px 14px var(--primary-soft); }
+  .mrb-secondary { background: var(--muted); color: var(--foreground); border: 1px solid var(--border); }
+  .mrb-primary:active, .mrb-secondary:active { transform: translateY(1px); }
+  /* 上移回到顶部按钮，避免与底部快捷栏重叠 */
+  .back-to-top { bottom: calc(4.8rem + env(safe-area-inset-bottom)); }
 }
