@@ -40,12 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const progress = document.getElementById('scrollProgress');
   const header = document.getElementById('header');
   const backToTop = document.getElementById('backToTop');
+  const recruitBar = document.getElementById('mobileRecruitBar');
   const onScroll = () => {
     const st = window.scrollY || document.documentElement.scrollTop;
     const h = document.documentElement.scrollHeight - window.innerHeight;
     if (progress) progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
     header?.classList.toggle('scrolled', st > 30);
     backToTop?.classList.toggle('show', st > 400);
+    if (recruitBar) {
+      const pastHero = st > window.innerHeight * 0.6;
+      recruitBar.classList.toggle('show', pastHero);
+      document.body.classList.toggle('recruit-bar-open', pastHero);
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
