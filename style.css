@@ -114,6 +114,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   max-width: 1080px;
   margin: 0 auto;
   padding: 0.55rem 0.7rem 0.55rem 1.2rem;
+  background: var(--card);
   background: color-mix(in srgb, var(--card) 82%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -407,6 +408,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .repair-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--border);
   border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
 }
 .service-icon-wrap {
@@ -462,6 +464,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--secondary);
+  background: var(--muted);
   background: color-mix(in srgb, var(--secondary) 14%, transparent);
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
@@ -492,7 +495,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 0.8rem 1rem;
 }
 .group-card-featured {
+  border-color: var(--border);
   border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+  box-shadow: 0 0 0 1px var(--border);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
@@ -747,6 +752,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .repair-value { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
 .repair-note { font-size: 0.85rem; color: var(--muted-foreground); }
 .repair-card-featured {
+  border-color: var(--border);
   border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
   background: var(--primary-soft);
 }
@@ -990,16 +996,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.55rem;
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
 .award-card--lg { grid-column: 1 / -1; }
 .award-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--border);
   border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
 }
 .award-head {
@@ -1125,15 +1132,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.4rem;
+  padding: 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.55rem;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .award-slide:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--border);
   border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
 }
 .award-slide-head {
@@ -1194,7 +1202,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .awards-track--reverse { animation: none !important; }
 }
 @media (max-width: 480px) {
-  .award-slide { width: 260px; padding: 1.1rem; }
+  .award-slide { width: 260px; padding: 1rem; }
   .award-slide-head h4 { font-size: 1.05rem; }
   .award-slide-desc { font-size: 0.8rem; }
   .award-slide-list li { font-size: 0.82rem; }
@@ -1221,10 +1229,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     display: flex;
     position: fixed;
     left: 0; right: 0; bottom: 0;
-    z-index: 870;
+    z-index: 840;
     gap: 0.6rem;
     padding: 0.6rem 0.9rem calc(0.6rem + env(safe-area-inset-bottom));
-    background: color-mix(in srgb, var(--card) 94%, transparent);
+    background: var(--card);
+  background: color-mix(in srgb, var(--card) 94%, transparent);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-top: 1px solid var(--border);
