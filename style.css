@@ -734,37 +734,58 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .platform-link:hover { transform: translateY(-2px); border-color: var(--primary); background: var(--card); }
 .platform-icon { font-size: 1.2rem; }
 
-/* ---------- 招新福利 ---------- */
-.benefits { margin-top: 2.8rem; }
-.benefits-title { text-align: center; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.6rem; }
+/* ---------- 福利大栏（独立 section） ---------- */
+.benefits-section {
+  background: linear-gradient(160deg, var(--primary-soft) 0%, var(--background) 68%);
+}
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 .benefit-card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--primary);
   border-radius: var(--radius);
-  padding: 1.3rem 1.1rem;
+  padding: 1.5rem 1.1rem 1.3rem;
   text-align: center;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.benefit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-.benefit-icon {
-  width: 46px; height: 46px;
-  margin: 0 auto 0.8rem;
-  display: grid; place-items: center;
-  border-radius: 12px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 1.4rem;
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
 }
-.benefit-card h4 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.4rem; }
+.benefit-icon {
+  width: 52px; height: 52px;
+  margin: 0 auto 0.9rem;
+  display: grid; place-items: center;
+  border-radius: 14px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 1.6rem;
+  transition: transform .25s ease;
+}
+.benefit-card:hover .benefit-icon { transform: scale(1.08); }
+.benefit-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; }
 .benefit-card p { font-size: 0.86rem; color: var(--muted-foreground); line-height: 1.5; }
+.benefits-cta { text-align: center; margin-top: 2.2rem; }
+.benefits-cta p { color: var(--muted-foreground); margin-bottom: 1rem; font-size: 1rem; }
+.btn-join {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  font-size: 1rem; font-weight: 700;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border: none; border-radius: 999px;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-join:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); filter: brightness(1.05); }
 @media (max-width: 768px) {
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  .benefits-title { font-size: 1.3rem; }
 }
 
 /* ---------- 故障报修 ---------- */
