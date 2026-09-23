@@ -1249,6 +1249,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (max-width: 768px) {
   .awards-marquee { gap: 0.75rem; }
+  /* 移动端紧凑化：收紧内距与行高，压低卡片高度 */
+  .award-slide { padding: 0.95rem; gap: 0.45rem; }
+  .award-slide-desc { line-height: 1.4; }
+  .award-slide-list { gap: 0.32rem; }
+  .award-slide-list li { line-height: 1.4; }
   .awards-track {
     cursor: grab;
     touch-action: pan-y;        /* 浏览器管竖滑，JS 管横滑 */
@@ -1261,7 +1266,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .awards-track--reverse { animation: none !important; }
 }
 @media (max-width: 480px) {
-  .award-slide { width: 260px; padding: 1rem; }
+  .award-slide { width: 272px; padding: 0.9rem; }
   .award-slide-head h4 { font-size: 1.05rem; }
   .award-slide-desc { font-size: 0.8rem; }
   .award-slide-list li { font-size: 0.82rem; }
