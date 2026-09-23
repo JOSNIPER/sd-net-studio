@@ -734,6 +734,39 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .platform-link:hover { transform: translateY(-2px); border-color: var(--primary); background: var(--card); }
 .platform-icon { font-size: 1.2rem; }
 
+/* ---------- 招新福利 ---------- */
+.benefits { margin-top: 2.8rem; }
+.benefits-title { text-align: center; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.6rem; }
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.1rem;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.benefit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+.benefit-icon {
+  width: 46px; height: 46px;
+  margin: 0 auto 0.8rem;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+.benefit-card h4 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.4rem; }
+.benefit-card p { font-size: 0.86rem; color: var(--muted-foreground); line-height: 1.5; }
+@media (max-width: 768px) {
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .benefits-title { font-size: 1.3rem; }
+}
+
 /* ---------- 故障报修 ---------- */
 .repair-grid {
   display: grid;
@@ -907,6 +940,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .repair-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .recruit-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
