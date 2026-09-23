@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   openModal('mobileJoinQQ', 'qqModal');
   openModal('wwBtn', 'wwModal');
   openModal('benefitsJoinBtn', 'qqModal');
+  openModal('mobileFillResume', 'wwModal');
   document.querySelectorAll('.qr-modal').forEach(modal => {
     modal.querySelector('.qr-modal-close')?.addEventListener('click', () => modal.classList.remove('open'));
     modal.querySelector('.qr-modal-overlay')?.addEventListener('click', () => modal.classList.remove('open'));
